@@ -137,5 +137,5 @@ jobs:
     - name: Upload AnyKernel3
       uses: actions/upload-artifact@v3
       with:
-        name: IdeaKernel-${{ env.DEVICE }}-${{ env.BUILD_TIME }}
+        name: IdeaKernel_${{ env.DEVICE }}_${{ env.BUILD_TIME }}
         path: kernel_workspace/AnyKernel3/*
