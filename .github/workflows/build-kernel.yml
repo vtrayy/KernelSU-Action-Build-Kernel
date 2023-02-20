@@ -97,7 +97,7 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
 
-    - name: Setup KernelSU
+    - name: Add KernelSU
       if: env.USE_KERNELSU == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
@@ -124,7 +124,7 @@ jobs:
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }} ${{ env.KERNEL_DEFCONFIG }}
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }}
 
-    - name: Make AnyKernel3 And Zip The Kernel
+    - name: Zip Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/wusixlHalo/ak3_idea
@@ -134,7 +134,7 @@ jobs:
         cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} ak3_idea/
         rm -rf ak3_idea/.git* ak3_idea/README.md
 
-    - name: Upload You Kernel
+    - name: Update Kernel
       uses: actions/upload-artifact@v3
       with:
         name: IdeaKernel_${{ env.DEVICE }}_${{ env.BUILD_TIME }}
