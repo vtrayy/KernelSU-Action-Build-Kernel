@@ -137,5 +137,5 @@ jobs:
     - name: Update Kernel
       uses: actions/upload-artifact@v3
       with:
-        name: IdeaKernel_${{ env.DEVICE }}_${{ env.BUILD_TIME }}
+        name: IdeaKernel_ALIOTH_${{ env.BUILD_TIME }}
         path: kernel_workspace/ak3_idea/*
