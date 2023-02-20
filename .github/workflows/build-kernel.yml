@@ -124,17 +124,17 @@ jobs:
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }} ${{ env.KERNEL_DEFCONFIG }}
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }}
 
-    - name: Make Anykernel for your kernel
+    - name: Make AnyKernel3 And Zip The Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/wusixlHalo/Kernel_Flasher_For_Idea
-        sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
-        sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' AnyKernel3/anykernel.sh
-        sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' AnyKernel3/anykernel.sh
-        cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} AnyKernel3/
-        rm -rf AnyKernel3/.git* AnyKernel3/README.md
+        git clone https://github.com/wusixlHalo/ak3_idea
+        sed -i 's/do.devicecheck=1/do.devicecheck=0/g' ak3_idea/anykernel.sh
+        sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' ak3_idea/anykernel.sh
+        sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' ak3_idea/anykernel.sh
+        cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} ak3_idea/
+        rm -rf ak3_idea/.git* ak3_idea/README.md
 
-    - name: Upload AnyKernel3
+    - name: Upload You Kernel
       uses: actions/upload-artifact@v3
       with:
         name: IdeaKernel_${{ env.DEVICE }}_${{ env.BUILD_TIME }}
