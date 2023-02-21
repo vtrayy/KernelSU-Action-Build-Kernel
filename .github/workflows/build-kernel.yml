@@ -128,11 +128,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/wusixlHalo/ak3_idea
-        sed -i 's/do.devicecheck=1/do.devicecheck=0/g' ak3_idea/anykernel.sh
         sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' ak3_idea/anykernel.sh
-        sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' ak3_idea/anykernel.sh
         cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} ak3_idea/
-        rm -rf ak3_idea/.git* ak3_idea/README.md
 
     - name: Update Kernel
       uses: actions/upload-artifact@v3
