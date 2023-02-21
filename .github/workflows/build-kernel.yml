@@ -130,6 +130,7 @@ jobs:
         git clone https://github.com/wusixlHalo/ak3_idea
         sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' ak3_idea/anykernel.sh
         cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} ak3_idea/
+        rm -rf ak3_idea/.git*
 
     - name: Update Kernel
       uses: actions/upload-artifact@v3
