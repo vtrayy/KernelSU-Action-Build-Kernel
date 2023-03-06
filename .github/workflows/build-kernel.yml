@@ -100,7 +100,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/bin:$PATH
-        export KBUILD_BUILD_HOST=ClangGCC
+        export KBUILD_BUILD_HOST=Github
         export KBUILD_BUILD_USER=Dogggee
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }} ${{ env.KERNEL_DEFCONFIG }}
         make -j$(nproc --all) O=out ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CC=clang ${{ env.BUILD_EXTRA_COMMAND }}
@@ -108,7 +108,7 @@ jobs:
     - name: Use AnyKernel3 to Zip Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/wusixlHalo/ak3_idea
+        git clone https://github.com/wusixlHalo/ak3_idea -b ak3_munch --depth=1
         sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' ak3_idea/anykernel.sh
         cp android-kernel/out/arch/arm64/boot/${{ env.KERNEL_FILE }} ak3_idea/
         rm -rf ak3_idea/.git*
