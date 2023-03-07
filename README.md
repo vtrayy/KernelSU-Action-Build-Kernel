@@ -14,7 +14,7 @@
 | CLANG_VERSION | 你想使用的 Clang 编译器版本 |
 | EXTRA_BUILD_COMMAND | 额外编译参数，某些内核需要这些参数才能编译，自行修改或添加。请注意，此处的每条参数后必须加空格，再续写新的参数。如 a=a b=b  |
 ### 3.参数修改完成后，点击Star即可触发构建。时间约为25分钟。产物在Action内，自行下载。
-### 请注意，内核默认加入了KernelSU。为保证稳定性，我没有打开KPROBES，这意味着如果要使用KernelSU，你必须自己打补丁。如何为内核源码打补丁请参考    [如何为非GKI设备集成KernelSU](https://kernelsu.org/zh_CN/guide/how-to-integrate-for-non-gki.html)。
+### 请注意，内核默认加入了KernelSU。为保证稳定性，我没有打开KPROBES，这意味着如果要使用KernelSU，你必须自己打补丁。如何为内核源码打补丁请参考 ：   [如何为非GKI设备集成KernelSU](https://kernelsu.org/zh_CN/guide/how-to-integrate-for-non-gki.html)。
 ### 内核已经关闭了设备检查，请不要跨设备刷内核。
 
 # 已支持使用的 Clang 版本
