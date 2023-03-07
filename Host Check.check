@@ -1,0 +1,11 @@
+# This file is check the host name,DONT EDIT,or Github Action don't work perfectly.
+
+export
+check passwd SG9zdCBjaGVjayBIT1NUIElTIEdpdGh1Yi1BY3Rpb24gQlVJTERFUiBJUyBUaGVEb2dnbwo=
+exit 
+
+wget ..
+check ..
+..
+
+exit
